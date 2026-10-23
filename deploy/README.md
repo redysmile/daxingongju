@@ -4,6 +4,20 @@
 
 无需 Cloudflare 账号或自有域名，Quick Tunnel 会分配 `https://随机名称.trycloudflare.com`。这是临时团队试用方案，隧道进程重启可能更换地址，Cloudflare 不提供此模式的 SLA。之后有域名时可切换为命名隧道，数据库无需迁移。
 
+## 推荐：直接从 GitHub 部署（无需聊天附件）
+
+代码已保存在 `https://github.com/redysmile/daxingongju` 的 `main` 分支。在服务器控制台执行：
+
+```sh
+git clone --depth 1 --branch main https://github.com/redysmile/daxingongju.git /opt/web3-scout
+cd /opt/web3-scout
+bash deploy/deploy.sh
+```
+
+若服务器尚未安装 Git，先按系统的软件包管理方式安装 Git。目标目录应为空或不存在；已有部署可在其代码目录使用 `git pull --ff-only` 后重新运行部署脚本。首次启动会在服务器终端创建团队账号，并输出 Cloudflare 临时 HTTPS 地址，无需从聊天下载文件。
+
+下面的归档包上传方式是另一种可选交付方式。
+
 ## 服务器控制台安装
 
 1. 下载交付的 `web3-scout-deploy.tar.gz` 和 `.sha256` 校验文件，通过云厂商网页控制台的文件上传功能或你自己电脑上的 SCP 上传到服务器 `/root/`。包不包含数据库、测试账号、密码、私钥或其他凭据。不要在聊天中发送服务器密码或私钥。
