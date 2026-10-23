@@ -135,7 +135,7 @@ class Handler(BaseHTTPRequestHandler):
         return bool(user)
     def do_GET(self):
         path=urlparse(self.path).path
-        public=['/login','/login.js','/style.css','/api/health']
+        public=['/login','/login.js','/style.css','/api/health','/brand/scout-mark.png','/favicon.ico']
         if path not in public and not self.authorize():
             if path.startswith('/api/'): return self.reply(401,{'error':'请先登录'})
             self.send_response(303); self.send_header('Location','/login'); self.send_header('Cache-Control','no-store'); self.end_headers(); return
@@ -145,10 +145,13 @@ class Handler(BaseHTTPRequestHandler):
                 self.reply(200,{'user':request_actor.get(), 'projects':[decorate(json.loads(r[0]),w) for r in db.execute('SELECT data FROM projects')], 'kols':[json.loads(r[0]) for r in db.execute('SELECT data FROM kols')], 'weights':w, 'activity':[json.loads(r[0]) for r in db.execute('SELECT data FROM activity ORDER BY id DESC LIMIT 500')]})
             return
         if path=='/api/health': return self.reply(200,{'ok':True})
-        names={'/':'index.html','/app.js':'app.js','/style.css':'style.css','/login':'login.html','/login.js':'login.js'}
+        names={'/':'index.html','/app.js':'app.js','/style.css':'style.css','/login':'login.html','/login.js':'login.js','/brand/scout-mark.png':'brand/scout-mark.png','/favicon.ico':'brand/scout-mark.png'}
         if path not in names: return self.reply(404,{'error':'页面不存在'})
         f=ROOT/'web'/names[path]; body=f.read_bytes()
-        self.send_response(200); self.send_header('Content-Type',{'html':'text/html','js':'text/javascript','css':'text/css'}[f.suffix[1:]]+'; charset=utf-8'); self.send_header('Content-Length',str(len(body))); self.send_header('Cache-Control','no-store'); self.end_headers(); self.wfile.write(body)
+        content_type={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png'}[f.suffix]
+        self.send_response(200); self.send_header('Content-Type',content_type); self.send_header('Content-Length',str(len(body)))
+        self.send_header('Cache-Control','public, max-age=86400' if f.suffix=='.png' else 'no-store')
+        self.end_headers(); self.wfile.write(body)
     def do_POST(self): self.mutate('POST')
     def do_PUT(self): self.mutate('PUT')
     def do_DELETE(self): self.mutate('DELETE')

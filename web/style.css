@@ -152,16 +152,10 @@ strong {
   color: var(--text);
 }
 .brand-mark {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  font-size: 26px;
-  color: #6e3a19;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fbecd0, #d7ad67 50%, #b1783d);
-  box-shadow: inset 0 0 0 3px #f8e2b6, inset 0 0 0 4px #bb884c;
-  border: 1px solid #a76e32;
 }
 .brand b {
   font-size: 10px;
@@ -2295,7 +2289,6 @@ footer>span:last-child {
 .brand-mark {
   width: 27px;
   height: 30px;
-  font-size: 23px;
 }
 .workspace {
   gap: 7px;
@@ -2408,7 +2401,6 @@ footer>span:last-child {
 .brand-mark {
   width: 34px;
   height: 36px;
-  font-size: 29px;
 }
 .workspace,.nav-caption,.research-note,.profile {
   display: none;
@@ -3030,16 +3022,9 @@ footer>span {
   border-top: 3px solid var(--copper);
 }
 .login-logo {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #fbecd0, #d7ad67 50%, #b1783d);
-  border-radius: 50%;
-  color: #6e3a19;
-  font-size: 38px;
-  margin-bottom: 28px;
-  border: 1px solid var(--copper);
+  width: 76px;
+  height: 76px;
+  margin-bottom: 24px;
 }
 .login-card .eyebrow {
   font-size: 10px;
@@ -3115,3 +3100,11 @@ footer>span {
 .ui-icon { width: 19px; height: 19px; display: inline-block; flex-shrink: 0; vertical-align: middle; }
 .nav-icon .ui-icon { width: 18px; height: 18px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* One transparent brand asset across desktop, mobile and the sign-in screen. */
+.brand-symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

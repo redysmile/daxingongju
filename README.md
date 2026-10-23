@@ -72,3 +72,9 @@ node tests/auth_browser.cjs
 中文优先使用微软雅黑（Microsoft YaHei），英文及数字优先使用 Cambria，通过 Unicode 字符范围分别指定。字体使用浏览器所在设备的本地字体；缺少字体时分别回退到 Noto Sans CJK 和 Georgia / Liberation Serif，无外部字体请求。Windows 上已安装微软雅黑及 Cambria 时直接使用指定字体。
 
 ![象牙白与赤金界面预览（虚构示例数据）](docs/ui-preview.png)
+
+## 品牌标志
+
+Logo 由 Alpha 的 A 形罗盘指针、环形追踪轨道和右上早期信号点组成，使用赤铜与金色，适配象牙白界面。透明底原始素材位于 `web/brand/scout-mark.png`，统一用于侧栏、手机导航、登录页、浏览器与触屏收藏图标。图片 URL 带内容版本号，便于更新时刷新缓存。
+
+![Web3 Scout Pro Alpha 罗盘标志](web/brand/scout-mark.png)
