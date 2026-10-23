@@ -1,6 +1,6 @@
 # Web3 Scout Pro
 
-面向内部研究员的 Web3 早期 Alpha 项目研究工作台。根据两份产品 / UI PDF 实现深色界面的可运行首版，数据由人工录入，共享保存于服务端 SQLite，不依赖外部 API、Python 包或前端构建工具。
+面向内部研究员的 Web3 早期 Alpha 项目研究工作台。根据产品文档实现，采用象牙白、赤金与黑 / 橙文字的团队研究界面，数据由人工录入，共享保存于服务端 SQLite，不依赖外部 API、Python 包或前端构建工具。
 
 ## 启动
 
@@ -64,3 +64,11 @@ node tests/auth_browser.cjs
 本地创建账号：`python3 manage.py user-add alice`，密码在终端安全输入。`SCOUT_REQUIRE_AUTH=1 python3 server.py` 启用登录。生产环境必须使用 HTTPS，Cookie 默认带 Secure、HttpOnly 和 SameSite=Strict。仅本地 HTTP 验证可设置 `SCOUT_COOKIE_SECURE=0`。首次无人账号时，也可通过受保护进程环境的 `SCOUT_ADMIN_USERNAME` / `SCOUT_ADMIN_PASSWORD` 初始化；推荐使用终端命令，不在配置文件或聊天中存储密码。
 
 部署用 Dockerfile 固定官方基础镜像摘要，以非 root 用户运行，持久卷保存 SQLite。部署脚本在服务器终端创建初始账号，不需要传递管理员密码到本环境。
+
+## 界面主题
+
+全站采用象牙白底色、赤金图标与标签、黑色正文和橙色重点文字。桌面、手机、登录页、项目详情、三步录入、KOL 与评分设置使用同一组颜色变量。
+
+中文优先使用微软雅黑（Microsoft YaHei），英文及数字优先使用 Cambria，通过 Unicode 字符范围分别指定。字体使用浏览器所在设备的本地字体；缺少字体时分别回退到 Noto Sans CJK 和 Georgia / Liberation Serif，无外部字体请求。Windows 上已安装微软雅黑及 Cambria 时直接使用指定字体。
+
+![象牙白与赤金界面预览（虚构示例数据）](docs/ui-preview.png)
