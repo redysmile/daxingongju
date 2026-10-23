@@ -1,0 +1,12 @@
+.data/
+__pycache__/
+*.pyc
+node_modules/
+test-results/
+.env
+.env.*
+*.pem
+*.key
+deploy/secrets/
+*.tar.gz
+deploy/*.sha256
